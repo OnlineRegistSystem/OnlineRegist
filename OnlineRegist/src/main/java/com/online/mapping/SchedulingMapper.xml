@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.dao.SchedulingMapper" >
+  <resultMap id="BaseResultMap" type="com.online.model.Scheduling" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="doctor_id" property="doctorId" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, doctor_id, date, number, state
+  </sql>
+  <resultMap type="com.online.bean.SchedulingResult" id="SchedulingResult">
+  <id column="shedulingId" property="schedulingId"/>
+  <result column="doctorId" property="doctorId"/>
+  <result column="cost" property="cost"/>
+  <result column="state" property="state"/>
+  <result column="date" property="date"/>  
+  </resultMap>
+  <select id="selectByDoctorId" resultMap="SchedulingResult">
+  select schedulingId,doctorId,cost,state,date
+  from (
+  (select id as schedulingId,doctor_id as doctorId,date,state from scheduling where doctor_id=#{doctorId}) as a
+  natural join
+  (select id as doctorId,doctor_class as class  from doctor) as b
+  natural join
+  (select id as class,cost from class_cost )as c
+  )
+  </select>
+  <select id="selectByDocterIdAndDate" resultMap="BaseResultMap">
+  select * 
+  from scheduling
+  where doctor_id=#{doctorId} and date = #{date}
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from scheduling
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from scheduling
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.online.model.Scheduling" >
+    insert into scheduling (id, doctor_id, date, 
+      number, state)
+    values (#{id,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}, 
+      #{number,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.online.model.Scheduling" >
+    insert into scheduling
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="doctorId != null" >
+        doctor_id,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.online.model.Scheduling" >
+    update scheduling
+    <set >
+      <if test="doctorId != null" >
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.online.model.Scheduling" >
+    update scheduling
+    set doctor_id = #{doctorId,jdbcType=INTEGER},
+      date = #{date,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

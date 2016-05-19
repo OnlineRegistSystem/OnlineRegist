@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.dao.DiseaseMapper" >
+  <resultMap id="BaseResultMap" type="com.online.model.Disease" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="departmen_id" property="departmenId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, departmen_id, name
+  </sql>
+  <!-- 补充 -->
+  <resultMap type="com.online.bean.DoctorResult" id="DoctorResult">
+  	<id column="doctorId" property="doctorId" />
+  	<result  column="doctorName" property="doctorName"/>
+  	<result column="hospitalName" property="hospitalName"/>
+  	<result column="hospitalId" property="hospitalId"/>
+  	<result column="doctorClass" property="doctorClass"/>
+  	<result column="doctorImage" property="doctorImage"/>
+  	<result column="doctorDesc" property="doctorDesc"/>
+  </resultMap>
+ <select id="selectByKey" resultMap="DoctorResult">
+ select *
+from(
+(select id as departmentId ,hospital_id as hospitalId from department) as a
+natural join
+(select id as hospitalId,name as hospitalName from hospital) as b
+natural join
+(select id as diseaseId,departmen_id as departmentId from disease where name like CONCAT('%',#{key},'%')) as c
+natural join
+(select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
+doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+)
+limit #{start},#{offset}
+ </select>
+ <select id="selectByKeyAndPositionId" resultMap="DoctorResult">
+ select *
+from(
+(select id as departmentId ,hospital_id as hospitalId from department) as a
+natural join
+(select id as hospitalId,name as hospitalName from hospital where positionId =#{positionId}) as b
+natural join
+(select id as diseaseId,departmen_id as departmentId from disease where name like '%#{key}%') as c
+natural join
+(select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
+doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+)
+limit #{start},#{offset}
+ </select>
+ <select id="selectByDepartmentId" resultMap="BaseResultMap">
+ select *
+ from disease
+ where departmen_id=#{departmentId}
+ </select>
+ <select id="selectDocterOfDisease" resultMap="DoctorResult">
+ select *
+from(
+(select id as departmentId ,hospital_id as hospitalId from department) as a
+natural join
+(select id as hospitalId,name as hospitalName from hospital ) as b
+natural join
+(select id as diseaseId,departmen_id as departmentId from disease where id=#{diseaseId} ) as c
+natural join
+(select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
+doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+)
+
+ </select>
+ 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from disease
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from disease
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.online.model.Disease" >
+    insert into disease (id, departmen_id, name
+      )
+    values (#{id,jdbcType=INTEGER}, #{departmenId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.online.model.Disease" >
+    insert into disease
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departmenId != null" >
+        departmen_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="departmenId != null" >
+        #{departmenId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.online.model.Disease" >
+    update disease
+    <set >
+      <if test="departmenId != null" >
+        departmen_id = #{departmenId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.online.model.Disease" >
+    update disease
+    set departmen_id = #{departmenId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

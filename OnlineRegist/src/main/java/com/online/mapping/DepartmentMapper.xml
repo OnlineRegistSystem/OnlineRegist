@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.dao.DepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.online.model.Department" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="hospital_id" property="hospitalId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, hospital_id, name
+  </sql>
+  <resultMap type="com.online.bean.DepartmentResult" id="DepartmentResult">
+  	<id column="departmentId" property="departmentId" jdbcType="INTEGER"/>
+  	<result column="hospiitalId" property="hospitalId" jdbcType="INTEGER"/>
+  	<result column="hospitalName" property="hospitalName" jdbcType="VARCHAR"/>
+  	<result column="departmentName" property="departmentName" jdbcType="VARCHAR" />
+  	<result column="hospitalClass" property="hospitalClass" jdbcType="VARCHAR"/>
+  	<result column="hospitalAddress" property="hospitalAddress" jdbcType="VARCHAR" />
+  	<result column="hospitalImage" property="hospitalImage" jdbcType="VARCHAR"/>
+  	<result column="hospital_phone" property="hospitalPhone" jdbcType="VARCHAR"/>
+  	<result column="positionId"	property="positionId" jdbcType="VARCHAR"/>
+  </resultMap>
+  <select id="selectByPage" resultMap="DepartmentResult">
+  select hospitalId,departmentId,hospitalName,departmentName,hospitalAddress,hospitalClass,hospitalImage,hospital_phone,positionId
+  from ((select id,positionId,name as hospitalName,image as hospitalImage,hospital_address as hospitalAddress ,hospital_class as hospitalClass,hospital_phone  from hospital ) as a
+  inner join
+  (select id as departmentId,hospital_id as hospitalId,name as departmentName from department) as b
+  on a.id=b.hospitalId)
+  limit  #{start},#{offset}
+  </select>
+  <select id="selectByKey" resultMap="DepartmentResult">
+  select hospitalId,positionId,departmentId,hospitalName,departmentName,hospitalAddress,hospitalClass,hospitalImage,hospital_phone
+  from ((select id,positionId,name as hospitalName,image as hospitalImage,hospital_address as hospitalAddress ,hospital_class as hospitalClass  ,hospital_phone from hospital ) as a
+  inner join
+  (select id as departmentId,hospital_id as hospitalId,name as departmentName from department
+  where name like CONCAT('%',#{key},'%') ) as b
+  on a.id=b.hospitalId)
+  limit  #{start},#{offset}
+  </select>
+  
+  <select id="selectDiseaseOfHospital" resultMap="BaseResultMap">
+  select * 
+  from department
+  where hospital_id=#{hospitalId}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from department
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from department
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.online.model.Department" >
+    insert into department (id, hospital_id, name
+      )
+    values (#{id,jdbcType=INTEGER}, #{hospitalId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.online.model.Department" >
+    insert into department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="hospitalId != null" >
+        hospital_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalId != null" >
+        #{hospitalId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.online.model.Department" >
+    update department
+    <set >
+      <if test="hospitalId != null" >
+        hospital_id = #{hospitalId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.online.model.Department" >
+    update department
+    set hospital_id = #{hospitalId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
