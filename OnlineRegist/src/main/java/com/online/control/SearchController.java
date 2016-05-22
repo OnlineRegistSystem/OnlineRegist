@@ -1,6 +1,8 @@
 package com.online.control;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -75,13 +77,20 @@ public class SearchController {
 			Integer offset = Integer.valueOf(number);
 			start = (start-1)*offset;
 			if(isAll==null){
-				list = hospitalService.selectByPage(start, offset);
+				list = hospitalService.selectByPage(start,offset);
 			}else{
 				list = hospitalService.selectByPage(start, 10000);
 			}
 		}
-		
-		return Message.getMessage(list);
+		Map<String, Object> map = new HashMap<String, Object>();
+		List list2 = hospitalService.selectByPage(0, 10000);
+		if(list2!=null){
+			map.put("number", list2.size());
+		}else{
+			map.put("number", 0);
+		}
+		map.put("hospitals", list);
+		return Message.getMessage(map);
 	}
 	@RequestMapping("/getDepartmentByPage")
 	@ResponseBody
@@ -109,8 +118,15 @@ public class SearchController {
 				list = departmentService.selectBypage(start, 10000);
 			}
 		}
-		
-		return Message.getMessage(list);
+		Map<String, Object> map = new HashMap<String, Object>();
+		List list2 = departmentService.selectBypage(0, 10000);
+		if(list2!=null){
+			map.put("number", list2.size());
+		}else{
+			map.put("number", 0);
+		}
+		map.put("departments", list);
+		return Message.getMessage(map);
 	}
 	@RequestMapping("/searchByType")
 	@ResponseBody
@@ -142,7 +158,16 @@ public class SearchController {
 					list = hospitalService.selectByKey(key,start, 10000);
 				}
 			}
-			return Message.getMessage(list);
+			Map<String, Object> map = new HashMap<String, Object>();
+			List list2 =hospitalService.selectByKey(key, 0, 10000);
+			if(list2!=null){
+				map.put("number", list2.size());
+			}else{
+				map.put("number", 0);
+			}
+			map.put("datas", list);
+			return Message.getMessage(map);
+			
 		}
 		
 		case 2:{//按科室查找
@@ -164,7 +189,16 @@ public class SearchController {
 					list =departmentService.selectByKey(key,start, 10000);
 				}
 			}
-			return Message.getMessage( list);
+			Map<String, Object> map = new HashMap<String, Object>();
+			List list2 =departmentService.selectByKey(key, 0, 10000);
+			if(list2!=null){
+				map.put("number", list2.size());
+			}else{
+				map.put("number", 0);
+			}
+			map.put("datas", list);
+			return Message.getMessage(map);
+			 
 		}
 		case 3:{//按疾病查找
 			Integer start = Integer.valueOf(page);
@@ -195,7 +229,15 @@ public class SearchController {
 				}
 			}
 			}
-			return Message.getMessage( list);
+			Map<String, Object> map = new HashMap<String, Object>();
+			List list2 =diseaseService.selectByKey(key, 0, 10000);
+			if(list2!=null){
+				map.put("number", list2.size());
+			}else{
+				map.put("number", 0);
+			}
+			map.put("datas", list);
+			return Message.getMessage(map);
 		}
 		case 4:{//按医生查找
 			Integer start = Integer.valueOf(page);
@@ -225,7 +267,15 @@ public class SearchController {
 					}
 				}
 			}
-			return Message.getMessage( list);
+			Map<String, Object> map = new HashMap<String, Object>();
+			List list2 =docterService.selectByKey(key, 0, 10000);
+			if(list2!=null){
+				map.put("number", list2.size());
+			}else{
+				map.put("number", 0);
+			}
+			map.put("datas", list);
+			return Message.getMessage(map);
 		}
 		default:
 			break;

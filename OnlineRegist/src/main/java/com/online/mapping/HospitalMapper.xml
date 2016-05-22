@@ -19,12 +19,17 @@
   select * from hospital where positionId=#{positionId}
   </select>
   <select id="selectBypage" resultMap="BaseResultMap" >
-  select * from hospital limit #{start},#{offset}
+  select * from hospital 
+    limit #{start},#{offset}
   </select>
   <select id="selectByKey" resultMap="BaseResultMap" >
   select * from hospital where name like CONCAT('%',#{key},'%')
   limit #{start},#{offset}
   </select>
+  
+  
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
