@@ -90,6 +90,9 @@ public class SearchController {
 			map.put("number", 0);
 		}
 		map.put("hospitals", list);
+		if(list.isEmpty()){
+			return Message.getMessage(2, "", map);
+		}
 		return Message.getMessage(map);
 	}
 	@RequestMapping("/getDepartmentByPage")
@@ -126,6 +129,9 @@ public class SearchController {
 			map.put("number", 0);
 		}
 		map.put("departments", list);
+		if(list.isEmpty()){
+			return Message.getMessage(2, "", map);
+		}
 		return Message.getMessage(map);
 	}
 	@RequestMapping("/searchByType")
@@ -166,6 +172,9 @@ public class SearchController {
 				map.put("number", 0);
 			}
 			map.put("datas", list);
+			if(list.isEmpty()){
+				return Message.getMessage(2, "", map);
+			}
 			return Message.getMessage(map);
 			
 		}
@@ -197,6 +206,9 @@ public class SearchController {
 				map.put("number", 0);
 			}
 			map.put("datas", list);
+			if(list.isEmpty()){
+				return Message.getMessage(2, "", map);
+			}
 			return Message.getMessage(map);
 			 
 		}
@@ -237,6 +249,9 @@ public class SearchController {
 				map.put("number", 0);
 			}
 			map.put("datas", list);
+			if(list.isEmpty()){
+				return Message.getMessage(2, "", map);
+			}
 			return Message.getMessage(map);
 		}
 		case 4:{//按医生查找
@@ -275,6 +290,9 @@ public class SearchController {
 				map.put("number", 0);
 			}
 			map.put("datas", list);
+			if(list.isEmpty()){
+				return Message.getMessage(2, "", map);
+			}
 			return Message.getMessage(map);
 		}
 		default:
