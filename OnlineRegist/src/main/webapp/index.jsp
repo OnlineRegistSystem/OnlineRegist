@@ -8,4 +8,5 @@
 <input type="submit" value="上传">
 </form>
 </body>
+<a href="hospital.jsp">到医院管理系统</a>
 </html>
