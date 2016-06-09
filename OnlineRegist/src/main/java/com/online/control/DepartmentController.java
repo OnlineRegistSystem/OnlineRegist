@@ -39,15 +39,6 @@ public class DepartmentController {
 		departmentService.addDepartmrnt(department);
 		return Message.getMessage(1, "", "");
 	}
-	@RequestMapping("/getDiseaseOfHospital")
-	@ResponseBody
-	public Object getDiseaseOfHospital(Integer hospitalId){
-		if(hospitalId==null){
-			return Message.getMessageParmNull();
-		}
-		List list = departmentService.getDiseseOfHospital(hospitalId);
-		
-		return Message.getMessage(list);
-	}
+	
 
 }

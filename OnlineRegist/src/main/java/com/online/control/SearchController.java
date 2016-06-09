@@ -310,4 +310,22 @@ public class SearchController {
 		List<SchedulingResult> list = schedulingService.selectByDoctorId(Integer.valueOf(doctorId));
 		return Message.getMessage(list);
 	}
+	@RequestMapping("/getDiseaseOfHospital")
+	@ResponseBody
+	public Object getDiseaseOfHospital(Integer hospitalId){
+		if(hospitalId==null){
+			return Message.getMessageParmNull();
+		}
+		List list = departmentService.getDiseseOfHospital(hospitalId);
+		
+		return Message.getMessage(list);
+	}
+	@RequestMapping("/getDocterOfDisease")
+	@ResponseBody
+	public Object getDocterOfDisease(Integer diseaseId){
+		if(diseaseId==null){
+			return Message.getMessageParmNull();
+		}
+		return Message.getMessage(diseaseService.getAllDoctorOfDisease(diseaseId));
+	}
 }

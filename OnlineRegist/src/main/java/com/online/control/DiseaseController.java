@@ -37,13 +37,6 @@ public class DiseaseController {
 		diseaseService.addDisease(disease);
 		return Message.getMessage(1, "", "");
 	}
-	@RequestMapping("/getDocterOfDisease")
-	@ResponseBody
-	public Object getDocterOfDisease(Integer diseaseId){
-		if(diseaseId==null){
-			return Message.getMessageParmNull();
-		}
-		return Message.getMessage(diseaseService.getAllDoctorOfDisease(diseaseId));
-	}
+	
 	
 }

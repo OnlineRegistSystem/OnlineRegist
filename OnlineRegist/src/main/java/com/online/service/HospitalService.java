@@ -12,4 +12,5 @@ public interface HospitalService {
 	public List selectByPage(Integer start,Integer offset);
 	
 	public List selectByKey(String key,Integer start,Integer offset);
+	public List selectDiseaseOfHospital(Integer hospitalId);
 }

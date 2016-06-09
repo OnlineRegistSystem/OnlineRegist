@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.online.dao.DepartmentMapper;
+import com.online.dao.DiseaseMapper;
 import com.online.dao.HospitalMapper;
 import com.online.model.Hospital;
 import com.online.service.HospitalService;
@@ -20,6 +22,10 @@ public class HospitalServiceImp implements HospitalService{
 
 	@	Resource
 	private HospitalMapper hospitalDao;
+	@Resource
+	private DepartmentMapper departmentMapper;
+	@Resource
+	private DiseaseMapper diseaseMapper;
 	public void addHospital(Hospital record) {
 		// TODO Auto-generated method stub
 		hospitalDao.insert(record);
@@ -35,6 +41,11 @@ public class HospitalServiceImp implements HospitalService{
 	public List selectByKey(String key, Integer start, Integer offset) {
 		// TODO Auto-generated method stub
 		return hospitalDao.selectByKey(key, start, offset);
+	}
+	public List selectDiseaseOfHospital(Integer hospitalId) {
+		// TODO Auto-generated method stub
+		 
+		return null;
 	}
 	
 

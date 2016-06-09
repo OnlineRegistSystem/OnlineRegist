@@ -234,11 +234,11 @@
 
 
 
-        <dependency>
+       <!--   <dependency>
             <groupId>org.ansj</groupId>
             <artifactId>ansj_seg</artifactId>
             <version>3.7.2</version>
-        </dependency>
+        </dependency>-->
         
         <!-- 4月14日补充， 邮件发送-->
 		<dependency>
