@@ -11,6 +11,9 @@ public class SchedulingResult {
 	private String cost;
 	private String state;
 	private Integer doctorId;
+	private String time;
+	private String week;
+	private Integer isMAE;
 	
 	public String getDate() {
 		return date;
@@ -41,6 +44,24 @@ public class SchedulingResult {
 	}
 	public void setDoctorId(Integer doctorId) {
 		this.doctorId = doctorId;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getWeek() {
+		return week;
+	}
+	public void setWeek(String week) {
+		this.week = week;
+	}
+	public Integer getIsMAE() {
+		return isMAE;
+	}
+	public void setIsMAE(Integer isMAE) {
+		this.isMAE = isMAE;
 	}
 
 

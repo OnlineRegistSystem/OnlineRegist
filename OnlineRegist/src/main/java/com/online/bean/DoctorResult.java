@@ -1,5 +1,7 @@
 package com.online.bean;
 
+import java.util.List;
+
 public class DoctorResult {
 	
 	private Integer doctorId;
@@ -8,6 +10,7 @@ public class DoctorResult {
     private String doctorDesc;
     private Integer doctorClass;
     private String doctorImage;
+    private List timeList;
     public Integer getDoctorId() {
 		return doctorId;
 	}
@@ -49,6 +52,12 @@ public class DoctorResult {
 	}
 	public void setHospitalId(Integer hospitalId) {
 		this.hospitalId = hospitalId;
+	}
+	public List getTimeList() {
+		return timeList;
+	}
+	public void setTimeList(List timeList) {
+		this.timeList = timeList;
 	}
 	private Integer hospitalId;
     

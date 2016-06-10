@@ -5,11 +5,15 @@ public class Scheduling {
 
     private Integer doctorId;
 
+    private String time;
+
     private String date;
 
     private String number;
 
     private String state;
+
+    private String week;
 
     public Integer getId() {
         return id;
@@ -25,6 +29,14 @@ public class Scheduling {
 
     public void setDoctorId(Integer doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time == null ? null : time.trim();
     }
 
     public String getDate() {
@@ -49,5 +61,13 @@ public class Scheduling {
 
     public void setState(String state) {
         this.state = state == null ? null : state.trim();
+    }
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week == null ? null : week.trim();
     }
 }

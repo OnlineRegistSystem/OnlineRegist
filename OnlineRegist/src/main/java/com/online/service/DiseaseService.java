@@ -11,5 +11,5 @@ public interface DiseaseService {
 	public List selectByKey(String key,Integer start ,Integer offset);
 	public List selectByKeyAndPositionId(String key,Integer positionId,Integer start ,Integer offset);
 	
-	public List getAllDoctorOfDisease(Integer diseaseId);
+	public List getAllDoctorOfDisease(Integer diseaseId,Integer page,Integer pageSize);
 }

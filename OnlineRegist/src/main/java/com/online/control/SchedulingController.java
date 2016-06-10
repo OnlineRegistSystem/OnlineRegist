@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.online.model.Scheduling;
 import com.online.service.SchedulingService;
+import com.online.util.DateUtil;
 import com.online.util.Message;
 
 /**
@@ -44,30 +45,32 @@ public class SchedulingController {
 	@RequestMapping("/addScheduling")
 	@ResponseBody
 	public Object addScheduling(Scheduling record){
-		if(record.getDate()==null||record.getDoctorId()==null||record.getNumber()==null){
+		if(record.getDate()==null||record.getDoctorId()==null||record.getNumber()==null||record.getTime()==null){
 			return Message.getMessageParmNull();
 		}
-		if(schedulingService.selectByDoctorIdAndDate(record.getDate(), record.getDoctorId())!=null){
+		if(schedulingService.selectByDoctorIdAndDate(record.getDate(), record.getDoctorId(),record.getTime())!=null){
 			return Message.getMessage(null);
 		}
 		if(record.getState()==null){
 			record.setState("1");
 		}
+		record.setWeek(DateUtil.getWeek( record.getDate(),"-"));
 		schedulingService.addSheduling(record);
 		return Message.getMessage();
 	}
 	@RequestMapping("/updateScheduling")
 	@ResponseBody
 	public Object updateScheduling(Scheduling record){
-		if(record.getDate()==null||record.getDoctorId()==null||record.getNumber()==null||record.getId()==null){
+		if(record.getDate()==null||record.getDoctorId()==null||record.getNumber()==null||record.getId()==null||record.getTime()==null){
 			return Message.getMessageParmNull();
 		}
-		if(schedulingService.selectByDoctorIdAndDate(record.getDate(), record.getDoctorId())!=null){
+		if(schedulingService.selectByDoctorIdAndDate(record.getDate(), record.getDoctorId(),record.getTime())!=null){
 			return Message.getMessage(null);
 		}
 		if(record.getState()==null){
 			record.setState("1");
 		}
+		record.setWeek(DateUtil.getWeek( record.getDate(),"-"));
 		schedulingService.updateScheduling(record);
 		return Message.getMessage();
 	}

@@ -19,8 +19,9 @@ public interface SchedulingMapper {
 
     int updateByPrimaryKey(Scheduling record);
     
- //补充
+  //补充
     List selectByDoctorId(@Param("doctorId")Integer doctorId);
     
-    Scheduling selectByDocterIdAndDate(@Param("date")String date,@Param("doctorId")Integer doctorId);
+    Scheduling selectByDocterIdAndDate(@Param("date")String date,@Param("doctorId")Integer doctorId,@Param("time")String time);
+
 }

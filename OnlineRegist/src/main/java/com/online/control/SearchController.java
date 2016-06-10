@@ -22,6 +22,7 @@ import com.online.service.DocterService;
 import com.online.service.HospitalService;
 import com.online.service.SchedulingService;
 import com.online.util.Message;
+import com.sun.mail.handlers.message_rfc822;
 
 /**
  * @author chuankun   email:yichuankun@qq.com
@@ -322,10 +323,19 @@ public class SearchController {
 	}
 	@RequestMapping("/getDocterOfDisease")
 	@ResponseBody
-	public Object getDocterOfDisease(Integer diseaseId){
-		if(diseaseId==null){
+	public Object getDocterOfDisease(Integer diseaseId,Integer page,Integer pageSize){
+		if(diseaseId==null||page==null||pageSize==null){
 			return Message.getMessageParmNull();
 		}
-		return Message.getMessage(diseaseService.getAllDoctorOfDisease(diseaseId));
+		Map<String, Object>  map = new HashMap<String, Object>();
+		List list2 = diseaseService.getAllDoctorOfDisease(diseaseId,null,null);
+		map.put("number", list2.size());
+		List list = diseaseService.getAllDoctorOfDisease(diseaseId,page,pageSize);
+		map.put("doctors", list);
+		if(list.size()!=0){
+			return Message.getMessage(1, "", map);
+		}else{
+			return Message.getMessage(2, "", map);
+		}
 	}
 }

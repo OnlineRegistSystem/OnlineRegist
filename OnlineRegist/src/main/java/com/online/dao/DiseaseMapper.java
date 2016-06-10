@@ -22,5 +22,5 @@ public interface DiseaseMapper {
     List selectByKey(@Param("key")String key,@Param("start")Integer start,@Param("offset")Integer offset); 
     List selectByKeyAndPositionId(@Param("key")String key,@Param("positionId") Integer positionId,@Param("start")Integer start,@Param("offset")Integer offset); 
     List selectByDepartmentId(@Param("departmentId")Integer departmentId);
-    List selectDocterOfDisease(@Param("diseaseId")Integer diseaseId);
+    List selectDocterOfDisease(@Param("diseaseId")Integer diseaseId,@Param("page")Integer page,@Param("pageSize")Integer pageSize);
 }

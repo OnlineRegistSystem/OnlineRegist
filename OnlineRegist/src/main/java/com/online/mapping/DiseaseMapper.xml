@@ -64,6 +64,9 @@ natural join
 (select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
 doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
 )
+<if test="page!=null">
+limit #{page},#{pageSize}
+</if>
 
  </select>
  

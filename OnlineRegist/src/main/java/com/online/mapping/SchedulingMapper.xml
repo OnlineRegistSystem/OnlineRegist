@@ -4,24 +4,29 @@
   <resultMap id="BaseResultMap" type="com.online.model.Scheduling" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="doctor_id" property="doctorId" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
     <result column="date" property="date" jdbcType="VARCHAR" />
     <result column="number" property="number" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, doctor_id, date, number, state
+    id, doctor_id, time, date, number, state, week
   </sql>
+  <!-- 补充 -->
   <resultMap type="com.online.bean.SchedulingResult" id="SchedulingResult">
   <id column="shedulingId" property="schedulingId"/>
   <result column="doctorId" property="doctorId"/>
   <result column="cost" property="cost"/>
   <result column="state" property="state"/>
-  <result column="date" property="date"/>  
+  <result column="date" property="date"/> 
+  <result column="week" property="week"/>
+  <result column="time" property="time"/> 
   </resultMap>
   <select id="selectByDoctorId" resultMap="SchedulingResult">
-  select schedulingId,doctorId,cost,state,date
+  select schedulingId,doctorId,cost,state,date,week,time
   from (
-  (select id as schedulingId,doctor_id as doctorId,date,state from scheduling where doctor_id=#{doctorId}) as a
+  (select id as schedulingId,doctor_id as doctorId,date,state,time,week from scheduling where doctor_id=#{doctorId}) as a
   natural join
   (select id as doctorId,doctor_class as class  from doctor) as b
   natural join
@@ -31,9 +36,8 @@
   <select id="selectByDocterIdAndDate" resultMap="BaseResultMap">
   select * 
   from scheduling
-  where doctor_id=#{doctorId} and date = #{date}
+  where doctor_id=#{doctorId} and date = #{date} and time = #{time}
   </select>
-  
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -46,10 +50,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.online.model.Scheduling" >
-    insert into scheduling (id, doctor_id, date, 
-      number, state)
-    values (#{id,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}, 
-      #{number,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
+    insert into scheduling (id, doctor_id, time, 
+      date, number, state, 
+      week)
+    values (#{id,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{week,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.online.model.Scheduling" >
     insert into scheduling
@@ -60,6 +66,9 @@
       <if test="doctorId != null" >
         doctor_id,
       </if>
+      <if test="time != null" >
+        time,
+      </if>
       <if test="date != null" >
         date,
       </if>
@@ -69,6 +78,9 @@
       <if test="state != null" >
         state,
       </if>
+      <if test="week != null" >
+        week,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -76,6 +88,9 @@
       </if>
       <if test="doctorId != null" >
         #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
       </if>
       <if test="date != null" >
         #{date,jdbcType=VARCHAR},
@@ -86,6 +101,9 @@
       <if test="state != null" >
         #{state,jdbcType=VARCHAR},
       </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.online.model.Scheduling" >
@@ -93,6 +111,9 @@
     <set >
       <if test="doctorId != null" >
         doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
       </if>
       <if test="date != null" >
         date = #{date,jdbcType=VARCHAR},
@@ -103,15 +124,20 @@
       <if test="state != null" >
         state = #{state,jdbcType=VARCHAR},
       </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.online.model.Scheduling" >
     update scheduling
     set doctor_id = #{doctorId,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR},
       date = #{date,jdbcType=VARCHAR},
       number = #{number,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR}
+      state = #{state,jdbcType=VARCHAR},
+      week = #{week,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

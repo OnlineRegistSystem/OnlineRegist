@@ -8,7 +8,7 @@ public interface SchedulingService {
 	
 	public void addSheduling(Scheduling record);
 	public List selectByDoctorId(Integer doctorId);
-	public Scheduling selectByDoctorIdAndDate(String date,Integer doctorId);
+	public Scheduling selectByDoctorIdAndDate(String date,Integer doctorId,String time);
 	
 	public void updateScheduling(Scheduling record);
 }

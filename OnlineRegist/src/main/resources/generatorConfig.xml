@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 <!-- 数据库驱动:注意路径的选择-->
-	<classPathEntry	location="/home/chuankun/Workspaces/mysql-connector-java-5.1.18-bin.jar"/>
+	<classPathEntry	location="d:/Chuankun/mysql-connector-java-5.1.26-bin.jar"/>
 	<context id="MysqlContext"	targetRuntime="MyBatis3">
 		<property name="beginningDelimiter" value="`"/>
 		<property name="endingDelimiter" value="`"/>
@@ -34,6 +34,6 @@
 			<property name="enableSubPackages" value="true"/>
 		</javaClientGenerator>
 		<!-- 要生成哪些表-->
-		<table tableName="book" domainObjectName="Book" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="scheduling" domainObjectName="Scheduling" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 	</context>
 </generatorConfiguration>

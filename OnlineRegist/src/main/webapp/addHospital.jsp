@@ -63,6 +63,7 @@
             success: function(result) {
             	if(result.code==1){
             		alert("添加成功");
+            		location.assign('showHospital.jsp');
             	}
             	else{
             		alert(result.error);
