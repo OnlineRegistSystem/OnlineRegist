@@ -97,7 +97,7 @@
 					error:function(){}
 				});
 			}
-			function getUrlValue(){
+			function getUrlValue(){  //获取url中的参数值
 				 
 				var url = location.search;
 				var arg = {};
