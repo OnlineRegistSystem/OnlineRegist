@@ -1,0 +1,514 @@
+@charset 'utf-8';
+/*juqery-ui的css属性修改*/
+.ui-widget-header{
+	background: #F4F4F4;
+}
+.ui-dialog{
+	padding: 0;
+}
+.ui-dialog-title{
+	text-align: center;
+}
+.ui-widget-content{
+	border: 1px solid #1A8AF0;
+}
+
+/*页面首部样式*/
+#header{
+	position:relative;
+	height:250px;
+}
+#header .container{
+	position: relative;
+	width: 960px;
+	height: 120px;
+	margin: 0 auto;
+	background: url(../images/header-bac.jpg) no-repeat 0% 65%;
+	
+}
+.platform{
+	position:relative;
+	display: block;
+}
+.platform:hover{
+	cursor: pointer;
+}
+#platform-logo{
+	position:absolute;
+	top:20px;
+	left:10px;
+	height:80px;
+	width:100px;
+}
+h2{
+	position:absolute;
+	top:20px;
+	left:120px;
+	color:#0DB8EE;
+}
+.text-logo{
+	position:absolute;
+	top:70px;
+	left:168px;
+	font-family:宋体,Hiragino Sans GB,Microsoft YaHei,微软雅黑,Arial,Verdana,sans-serif;
+	color: #FFBA46;
+}
+#log-reg{
+	position:absolute;
+	top:10px;
+	right:10px;
+	font-size:14px;
+	color:#999;
+}
+
+.log-reg{
+	display:inline-block;
+}
+.log-reg li{
+	display:inline-block;
+	border-right:1px solid #666;
+	padding-right:6px;
+}
+.log-reg a{
+	display:block;
+	text-decoration: none;
+	color:#0DB8EE;
+}
+.log-reg a:hover{
+	text-decoration:underline;
+}
+.log-reg a:visited{
+	color:#F07F33;
+}
+
+/*登录，注册弹出框*/
+#login-dialog{
+	display: none;
+}
+#login-dialog input{
+	display: inline-block;
+	width: 230px;
+	height: 32px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	outline: none;
+	font-size: 14px;
+}
+#login-dialog label{
+	color: #666;
+	font-weight: bold;
+}
+#login-dialog div{
+	position: absolute;
+	padding: 10px 70px;
+}
+#login-dialog ul{
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 18px;
+	color: red;
+	padding-left: 70px;
+}
+#login-form{
+	position: relative;
+	top: -27px;
+}
+.username-option{
+	top: 40px;
+}
+#username, #password{
+	text-indent: 4px;
+}
+.password-option{
+	top: 80px;
+}
+#submit-btn, #return-reg-btn{
+	width: 100px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	background: #1A8AF0;
+	outline: none;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 14px;
+	margin-left: 20px;
+}
+#submit-btn:hover, #return-reg-btn:hover{
+	cursor: pointer;
+	font-weight: bold;
+}
+.btn-option{
+	left: 60px;
+	top: 140px;
+}
+em.dot{
+	color: red;
+}
+#login-dialog a{
+	color: #666;
+	font-size: 12px;
+	position: absolute;
+	bottom: 50px;
+	right: 40px;
+}
+
+/*注册弹出框*/
+#reg-dialog{
+	display: none;
+}
+#reg-dialog input{
+	font-size: 14px;
+}
+#reg-dialog .reg-error{
+	position: absolute;
+	top: 30px;
+	left: 70px;
+	display: inline-block;
+	color: red;
+	font-weight: bold;
+	font-size: 14px;
+}
+#reg-form{
+	position: relative;
+	padding: 50px 20px 0 20px;
+}
+#reg-form label{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+#reg-form .reg-option{
+	height: 40px;
+	line-height: 40px;
+}
+#reg-form input{
+	outline: none;
+	height: 35px;
+	width: 300px;
+	border: 1px solid #999;
+	border-radius: 2px;
+	text-indent: 6px;
+}
+#reg-btn{
+	margin: 40px 0 0 75px;
+	width: 300px;
+	height: 40px;
+	font-size: 22px;
+	background: #1A8AF0;
+	border-radius: 2px;
+	border: none;
+	cursor: pointer;
+}
+#reg-btn:hover{
+	background: #3E8dFf;
+}
+#exited{
+	position: relative;
+	left: 350px;
+	font-size: 14px;
+}
+.complaint{
+	color:#666;
+}
+#search{
+	position:absolute;
+	right:45px;
+	top: 58px;
+}
+.search-list{
+	display:inline-block;
+}
+#list-options{
+	position:relative;
+	top:1px;
+	left:10px;
+	background-color:#1FA4F0;
+	border:none;
+	outline:none;
+	height:40px;
+	font-size:15px;
+	color:#333;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+.search-text{
+	display: inline-block;
+	height: 40px;
+	width: 270px;
+	text-indent: 4px;
+	outline: none;
+	border: 2px solid #1FA4F0;
+}
+#head-submit{
+	position: absolute;
+	top: 1px;
+	right: -26px;
+	height: 40px;
+	width: 50px;
+	background-color: #1FA4F0;
+	outline: none;
+	border: none;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+#head-submit:hover{
+	cursor: pointer;
+}
+#head-submit:before{
+	position: absolute;
+	content: '';
+	top: 8px;
+	right: 16px;
+	display: block;
+	height: 16px;
+	width: 16px;
+	border-radius: 16px;
+	border: 2px solid #FFF;
+}
+#head-submit:after{
+	position: absolute;
+	content: '';
+	display: block;
+	top: 23px;
+	right: 16px;
+	height: 8px;
+	border: 1px solid #FFF;
+	transform: rotate(-45deg);
+}
+#head-nav{
+	position: absolute;
+	bottom:50px;
+	width: 100%;
+	height: 82px;
+	background: #ECF8F8;
+}
+.nav{
+	position: relative;
+	display: block;
+	width: 960px;
+	margin:0 auto;
+	font-size: 0;
+	background-color: #0092F9;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+}
+.nav li{
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 100px;
+	text-align:center;
+	font-size: 16px;
+	font-weight: bold;
+}
+.nav li a{
+	position: relative;
+	top: 2px;
+	left:4px;
+	display: block;
+	height: 38px;
+	text-decoration: none;
+	color: #FFF;
+	border-top-right-radius:2px;
+	border-top-left-radius:2px;
+}
+
+ul.toggle{
+	display: none;
+	position: absolute;
+	top:36px;
+	z-index :1;
+}
+.toggle li{
+	display: inline-block;
+	font-size: 12px;
+}
+#head-nav .toggle-show ul li a{
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 2px;
+	color: #333;
+}
+#head-nav .toggle-show ul li a:hover{
+	color: #fff;
+	background: #AFAE8F;
+}
+.nav-bottom{
+	position: relative;
+	bottom:0;
+	margin: 0 auto;
+	background: #F3F3F3;
+	width: 958px;
+	height: 40px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+#head-nav .selected{
+	background-color: #F7F7F7;
+	color: #0092F9;
+}
+.head-bottom-black{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 10px;
+	background: #C7C7C7;
+	text-indent: -99999px;
+}
+
+/*页面底部样式*/
+#footer{
+	width: 100%;
+	margin-top: 30px;
+	background: #EFEFEF;
+}
+#footer-content{
+	position: relative;
+	border: 1px solid #EFEFEF;
+	width: 960px;
+	height: 150px;
+	margin: 0 auto;
+	color: #666;
+	font-size: 14px;
+}
+#footer-content ul{
+	margin: 20px 270px;
+}
+#footer-content li{
+	display: inline-block;
+}
+#footer-content li a{
+	color: #666;
+	text-decoration: none;
+}
+#footer-content li a:hover{
+	text-decoration: underline;
+}
+#footer p{
+	display: inline-block;
+	margin: 0 40px;
+}
+#footer p.copy{
+	width:200px;
+	display: block;
+	margin: 20px auto 0;
+}
+
+/*头部最底部的搜索框样式*/
+.search-box{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	background: #EFEFEF;
+}
+.fixed{   
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	box-shadow: 4px 4px 5px #666;
+	-moz-box-shadow: 4px 4px 5px #666;
+	-ms-box-shadow: 4px 4px 5px #666;
+	-webkit-box-shadow: 4px 4px 5px #666;
+	-o-box-shadow: 4px 4px 5px #666;
+}
+#bottom-search{
+	position: absolute;
+	top: 10px;
+	width: 960px;
+	left: 50%;
+	margin-left: -480px;
+}
+.hospital-part, .room-part, .name-part, .time-part, #middle-submit{
+	display: inline-block;
+	position: absolute;
+	color: #333;
+	border-radius: 2px;
+}
+.room-part{
+	left: 260px;
+}
+.name-part{
+	right: 270px;
+}
+.time-part{
+	right: 75px;
+}
+#middle-submit{
+	right: 0;
+	background-color: #0092F9;
+	border: none;
+	width: 60px;
+	height: 25px;
+	color: #fff;
+}
+#hospital, #room, #name, #time{
+	display: inline-block;
+	height: 25px;
+	outline: none;
+}
+#hospital{
+	width: 200px;
+	text-indent: 4px;
+}
+#room{
+	width: 200px;
+	text-indent: 4px;
+}
+#name{
+	width: 100px;
+	text-indent: 4px;
+}
+.room-lists, .name-lists{
+	display: inline-block;
+}
+.room-list-options{
+	display: inline-block;
+	width: 198px;
+}
+.name-list-options{
+	display: inline-block;
+	width: 98px;
+}
+.middle-toggle{
+	display: none;
+	position: absolute;
+	border: 1px solid #999;
+	background-color: #B9E9F0;
+	z-index: 9999;
+}
+ul.middle-toggle li{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+ul.middle-toggle li a{
+	display: block;
+	text-decoration: none;
+	color: #666;
+	text-indent: 4px;
+}
+.room-list-options{
+	top: 25px;
+	left: 42px;
+}
+.name-list-options{
+	top: 25px;
+	left: 70px;
+}
+ul.room-list-options li a{
+	width: 198px;
+}
+ul.name-list-options li a{
+	width: 98px;
+}
+ul.middle-toggle li a:hover{
+	background: #A5D4F2;
+}

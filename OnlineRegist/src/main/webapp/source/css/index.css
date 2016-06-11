@@ -1,0 +1,376 @@
+﻿@charset 'utf-8';
+ul{
+	list-style:none;
+}
+html,body,article,ul,li, h5, span, p{
+	margin:0;
+	padding:0;
+}
+body{
+	font-size:16px;
+}
+
+/*.article{
+	position: relative;
+}*/
+
+.container-two{
+	position: relative;
+	top: 10px;
+	width: 960px;
+	margin: 0 auto;
+}
+#banner{
+	position: relative;
+	width: 700px;
+	height: 306px;
+}
+#banner .banner-bg{
+	position: absolute;
+	bottom: 0;
+	background-color: #000;
+	height: 30px;
+	filter: Alpha(Opacity=30);
+	opacity: 0.3;
+	z-index: 99;
+	cursor: pointer;
+	width: 700px;
+}
+.banner-info{
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+	height: 22px;
+	color: #fff;
+	font-weight: bold;
+	z-index: 99;
+	cursor: pointer;
+}
+
+#banner ul{
+	position: absolute;
+	filter: Alpha(Opacity=80);
+	opacity: 0.8;
+	z-index: 99;
+	bottom: 3px;
+	right: 5px;
+}
+#banner ul li{
+	padding: 0 8px;
+	float: left;
+	display: block;
+	color: #fff;
+	background: #60BFF2;
+	cursor: pointer;
+	border: 1px solid #fff;
+}
+#banner ul li.on{
+	background: #0092F9;
+	color: #6f4f67;
+}
+.banner-list a{
+	position: absolute;
+}
+.banner-list img{
+	width: 700px;
+	border: 0;
+}
+/*右边的通知栏*/
+#inform{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 306px;
+	width: 240px;
+	border: 1px solid #F4F6FA;
+	text-indent: 15px;
+}
+.inform-bar{
+	position: relative;
+	height: 45px;
+	line-height: 45px;
+	background-color: #F4F6FA;
+	color: #FEC009;
+	font-size: 16px;
+	font-weight: bold;
+}
+.inform-bar a{
+	position: absolute;
+	top: 12px;
+	right: 20px;
+	display: inline-block;
+	font-size: 14px;
+	color: #666;
+	text-decoration: none;
+	height: 20px;
+	line-height: 20px;
+	border-left: 1px solid #999;
+}
+ul.inform-list{
+	margin-top: 10px;
+} 
+.inform-list a{
+	display: block;
+	margin: 9px 0;
+	text-decoration: none;
+	color: #9C9996;
+	font-size: 14px;
+	white-space: nowrap;     /*多余文字用…表示*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.inform-list a:hover{
+	text-decoration: underline;
+	color: #70BBD6;
+}
+/*热门医院*/
+#hot-hospital{
+	position: absolute;
+	height: 575px;
+	width: 240px;
+	right: 0;
+	top: 315px;
+	border: 1px solid #333;
+}
+/*医院，科室选择列表*/
+#select-hospital-room{
+	margin-top: 10px;
+	border: 1px solid #F4F6FA;
+	width:700px;
+}
+.hospital-room-bar{
+	height: 34px;
+	background-color: #EFEFEF;
+	font-size: 0px;
+}
+#room-lists{
+	display: none;
+}
+.hospital-room-btn{
+	font-size: 16px;
+	display: inline-block;
+	width:80px;
+	line-height: 34px;
+	text-align: center;
+	color: #60BFF2;
+	font-weight: bold;
+}
+.hospital-room-btn:hover{
+	cursor: pointer;
+}
+.btn-selected{
+	background-color: #60BFF2;
+	color: #fff;
+	cursor: pointer;
+}
+.place, .rooms{
+	border-bottom: 1px solid #EFEFEF;
+	height: 40px;
+	font-size: 0;
+	vertical-align: middle;
+	text-indent: 6px;
+}
+.place li, .rooms li{
+	display: inline-block;
+	height:25px;
+	line-height: 25px;
+	margin-top: 6px;
+}
+.place li a, .rooms li a{
+	display: block;
+	padding: 0 8px;
+	font-size: 12px;
+	color: #666;
+	text-decoration: none;
+}
+.place li a:hover, .place li .place-selected, .rooms li a:hover, .rooms li .rooms-selected{
+	background: #60BFF2;
+	color: #fff;
+}
+ul.hospital-show, ul.room-show{
+	font-size: 0px;
+	color: #666;
+}
+ul.hospital-show li, ul.room-show li{
+	display: inline-block;
+	height: 150px;
+	width: 348px;
+	position: relative;
+	font-size: 14px;
+}
+ul.hospital-show li img, ul.room-show li img{
+	width: 150px;
+	height: 120px:;
+	position: absolute;
+	top: 20px;
+	left: 5px;
+}
+ul.hospital-show li .level, ul.room-show li .level{
+	position: absolute;
+	top: 6px;
+	right: 5px;
+	font-weight: bold;
+	color: #FCC55F;
+}
+ul.hospital-show li a, ul.room-show li a{
+	position: absolute;
+	top: 36px;
+	left: 170px;
+	color: #70BBD6;
+	text-decoration: none;
+	font-size: 14px;
+}
+ul.hospital-show li a:hover, ul.room-show li a:hover{
+	color: #1FA4F0;
+}
+ul.hospital-show li .tel, ul.room-show li .room-name{
+	position: absolute;
+	top: 49px;
+	left: 170px;
+}
+ul.hospital-show li .address, ul.room-show li .address{
+	position: absolute;
+	top: 78px;
+	left: 170px;
+}
+.load-more{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+.load-more a{
+	color: #666;
+	display: block;
+	text-decoration: none;
+	border-top: 1px dashed #999;
+}
+.load-more a:hover{
+	border: 1px solid #EFEFEF;
+	background: #EFEFEF;
+}
+/*返回顶部按钮*/
+.return-top{
+	position: fixed;
+	display: none;
+	bottom: 10%;
+	right: 150px;
+}
+a#a-return-top{
+	display: block;
+	height: 40px;
+	width: 40px;
+	background: url(../images/return-top.jpg) no-repeat;
+}
+a#a-return-top:hover{
+	background: url(../images/return-top.jpg) -40px 0;
+}
+
+/*搜索结果展示*/
+.search-result{
+	box-sizing: border-box;
+	position: relative;
+	top: 10px;
+	border: 1px solid #ccc;
+	min-height: 200px;
+	width: 960px;
+	margin: 0 auto;
+	padding-left: 25px;
+	padding-right: 30px;
+	padding-bottom: 20px; 
+}
+.search-result h5{
+	margin-bottom: 20px;
+	width: 900px;
+	height: 45px;
+	line-height: 55px;
+	color: #0099FE;
+	border-bottom: 1px solid #999;
+}
+.search-result .important-word{
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 30px;
+}
+.search-result .import-word{
+	font-weight: bold;
+}
+.search-result .none-result{
+	box-sizing: border-box;
+	display: inline-block;
+	height: 45px;
+	line-height: 45px;
+	border: 1px solid #FED1AF;
+	background: #FEFFCA;
+	font-size: 14px;
+	text-indent: 20px;
+	color: #FF6701;
+}
+.search-result .result-list{
+	border: 1px solid #CCCCCC;
+	border-bottom: none;
+	color: #666;
+}
+.search-result .result-list li{
+	box-sizing: border-box;
+	position: relative;
+	border-bottom: 1px solid #CCCCCC;
+	height: 200px;
+	padding: 25px 0 20px 30px;
+	background: #FbFbFb;
+}
+.search-result .result-list img{
+	width: 200px;
+	height: 150px;
+	margin-right: 20px;
+}
+.search-result .result-list p{
+	display: inline-block; 
+	position: absolute;
+}
+.search-hospital-name{
+	color: #333;
+	font-weight: bold;
+	top: 40px;
+}
+.search-result .search-hospital-level{
+	top: 40px;
+	left: 340px;
+	font-size: 14px;
+	color: #F7B52C;
+}
+.search-result .search-hospital-room{
+	color: #0099FE;
+	font-weight: bold;
+	font-size: 14px;
+	top: 65px;
+}
+.search-result .search-hospital-phone{
+	top: 90px;
+}
+
+.search-result .search-hospital-address{
+	top: 130px;
+}
+.search-result .result-list li:hover{
+	background: #F5FCFF;
+}
+#search-book{
+	float: right;
+	margin: 50px 70px 0 0;
+	background-image: url(../images/yiyuananniu.png);
+	background-position: 0px -4px;
+	width: 105px;
+	height: 70px;
+	display: inline-block;
+	box-sizing: border-box;
+	padding:0 5px;
+	display: inline-block;
+	height: 27px;
+	line-height: 27px;
+	border-radius: 2px;
+	color: #FFF;
+}
+#search-book:hover{
+	background-position: -105px -4px;
+	cursor: pointer;
+}

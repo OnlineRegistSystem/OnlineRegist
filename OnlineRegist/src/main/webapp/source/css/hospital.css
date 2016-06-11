@@ -1,0 +1,119 @@
+@charset 'utf-8';
+span{
+	margin: 0;
+	padding: 0;
+}
+.wrap{
+	margin: 6px auto;
+	width: 960px;
+	padding-top: 6px;
+}
+.hospital-wrap,.room-wrap{
+	background: #F7F7F7;
+	padding: 6px 0;
+}
+.wrap strong{
+	display: block;
+	background: #0092F9;
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #FFF;
+	margin: 6px;
+}
+.wrap strong:after{
+	content: '';
+	height: 2px;
+	display: block;
+	width: 948px;
+	background: #0092F9;
+}
+.content{
+	position: relative;
+	margin: 4px 29px 4px 29px;
+	
+}
+#hospital-focused{
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	border-bottom: 1px solid #999;
+}
+.focused{
+	display: inline-block;
+	font-size: 14px;
+	color: #F29600;
+	margin-left: 10px;
+}
+.content img{
+	margin-top: 10px;
+}
+.hospital-focused-address{
+	position: absolute;
+	display: inline-block;
+	font-size: 14px;
+	color: #999;
+	vertical-align: top;
+	left: 250px;
+	top: 65px;
+	background: url(../../source/images/yiyuantubiao.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	text-indent: 20px;
+}
+.hospital-focused-phone{
+	position: absolute;
+	left: 250px;
+	top: 60px;
+	display: inline-block;
+	margin-top: 40px;
+	font-size: 14px;
+	color: #999;
+	vertical-align: top;
+	background: url(../../source/images/yiyuantubiao.png);
+	background-position: 0 -85px;
+	background-repeat: no-repeat;
+	text-indent: 20px;
+}
+.room-decoration{
+	text-indent: 25px;
+	margin-top: 20px;
+	height:40px;
+	line-height: 40px;
+	font-size: 15px;
+	background: #F7F7F7;
+}
+.room-wrap{
+	overflow: hidden;
+	background: #DFF2FC;
+	margin-bottom: 6px;
+	padding: 0;
+}
+.room-id{
+	float: left;
+	display: inline-block;
+	padding: 12px 0 20px 0;
+	width: 150px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+.room-wrap ul{
+	float: left;
+	display: inline-block;
+	background: #F2FBFF;
+	min-height: 48px;
+	width: 810px;
+}
+.room-wrap ul li{
+	margin: 8px 88px 12px 10px;
+	padding: 3px 20px;
+	display: inline-block;
+}
+.room-wrap  li a{
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	color: #888888;
+}
