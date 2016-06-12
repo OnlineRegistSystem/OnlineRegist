@@ -24,4 +24,5 @@ public interface SchedulingMapper {
     
     Scheduling selectByDocterIdAndDate(@Param("date")String date,@Param("doctorId")Integer doctorId,@Param("time")String time);
 
+    List manageSelectByDoctorId(@Param("doctorId")Integer doctorId);
 }

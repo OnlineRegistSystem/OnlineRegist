@@ -1,5 +1,7 @@
 package com.online.service.imp;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,10 @@ public class CostServiceImp implements CostService{
 		// TODO Auto-generated method stub
 		
 		return classCostDao.selectByPrimaryKey(id);
+	}
+	public List selectAll() {
+		// TODO Auto-generated method stub
+		return classCostDao.selectAll();
 	}
 	
 	

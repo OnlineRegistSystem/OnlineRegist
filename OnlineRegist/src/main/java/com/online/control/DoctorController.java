@@ -18,12 +18,12 @@ import com.online.util.Message;
  */
 @Controller
 @RequestMapping("/manage")
-public class DocterController {
+public class DoctorController {
 
 	@Resource
 	private DocterService docterService;
 	
-	@RequestMapping("/addDocter")
+	@RequestMapping("/addDoctor")
 	@ResponseBody
 	public Object addDocter(HttpServletRequest request){
 		String name = request.getParameter("name");

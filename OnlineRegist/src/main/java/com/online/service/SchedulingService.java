@@ -11,4 +11,6 @@ public interface SchedulingService {
 	public Scheduling selectByDoctorIdAndDate(String date,Integer doctorId,String time);
 	
 	public void updateScheduling(Scheduling record);
+	
+	public List manageSelectByDoctorId(Integer doctorId);
 }

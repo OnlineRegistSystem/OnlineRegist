@@ -1,5 +1,7 @@
 package com.online.dao;
 
+import java.util.List;
+
 import com.online.model.ClassCost;
 
 public interface ClassCostMapper {
@@ -14,4 +16,7 @@ public interface ClassCostMapper {
     int updateByPrimaryKeySelective(ClassCost record);
 
     int updateByPrimaryKey(ClassCost record);
+    
+    //补充
+    List selectAll();
 }

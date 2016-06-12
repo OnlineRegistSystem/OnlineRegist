@@ -9,6 +9,12 @@
   <sql id="Base_Column_List" >
     id, name, cost
   </sql>
+  <!-- 补充 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from class_cost
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

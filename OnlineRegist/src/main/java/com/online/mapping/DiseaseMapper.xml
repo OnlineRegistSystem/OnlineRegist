@@ -29,7 +29,7 @@ natural join
 (select id as diseaseId,departmen_id as departmentId from disease where name like CONCAT('%',#{key},'%')) as c
 natural join
 (select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
-doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+doctor_desc as doctorDesc,doctor_class as doctorClass from doctor ) as d
 )
 limit #{start},#{offset}
  </select>
@@ -43,7 +43,7 @@ natural join
 (select id as diseaseId,departmen_id as departmentId from disease where name like '%#{key}%') as c
 natural join
 (select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
-doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+doctor_desc as doctorDesc,doctor_class as doctorClass from doctor ) as d
 )
 limit #{start},#{offset}
  </select>
@@ -62,7 +62,7 @@ natural join
 (select id as diseaseId,departmen_id as departmentId from disease where id=#{diseaseId} ) as c
 natural join
 (select id as doctorId,name as doctorName,disease_id as diseaseId ,doctor_image as doctorImage,
-doctor_desc as doctorDesc,doctor_class as docterClass from doctor ) as d
+doctor_desc as doctorDesc,doctor_class as doctorClass from doctor ) as d
 )
 <if test="page!=null">
 limit #{page},#{pageSize}

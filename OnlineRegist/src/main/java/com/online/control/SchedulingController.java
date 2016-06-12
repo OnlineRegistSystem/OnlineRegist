@@ -11,6 +11,7 @@ import com.online.model.Scheduling;
 import com.online.service.SchedulingService;
 import com.online.util.DateUtil;
 import com.online.util.Message;
+import com.sun.mail.handlers.message_rfc822;
 
 /**
  * @author chuankun   email:yichuankun@qq.com
@@ -74,4 +75,14 @@ public class SchedulingController {
 		schedulingService.updateScheduling(record);
 		return Message.getMessage();
 	}
+	@RequestMapping("/getScheduling")
+	@ResponseBody
+	public Object getScheduling(Integer doctorId){
+		if(doctorId==null){
+			return Message.getMessageParmNull();
+		}
+		
+		return Message.getMessage(schedulingService.manageSelectByDoctorId(doctorId));
+	}
+	
 }

@@ -43,7 +43,7 @@ public class CostController {
 	public Object getClassAndCost(HttpServletRequest request){
 		String classCostId = request.getParameter("classCostId");
 		if(classCostId==null){
-			return Message.getMessage(0, "参数为空！", "");
+			return Message.getMessage(costService.selectAll());
 		}
 		ClassCost classCost = costService.getCost(Integer.valueOf(classCostId));
 		return Message.getMessage(classCost);

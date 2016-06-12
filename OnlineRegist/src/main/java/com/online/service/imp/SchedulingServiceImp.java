@@ -48,5 +48,9 @@ public class SchedulingServiceImp implements SchedulingService{
 		// TODO Auto-generated method stub
 		schedulingMapper.updateByPrimaryKey(record);
 	}
+	public List manageSelectByDoctorId(Integer doctorId) {
+		// TODO Auto-generated method stub
+		return schedulingMapper.manageSelectByDoctorId(doctorId);
+	}
 
 }
